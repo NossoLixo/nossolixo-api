@@ -19,4 +19,25 @@ RSpec.describe Category, type: :model do
       expect(described_class.approved).to match_array(approved)
     end
   end
+
+  describe '#approve' do
+    subject { create(:category, :disapproved) }
+    let(:now) { Time.current }
+
+    before do
+      Timecop.freeze(now)
+    end
+
+    it 'approves the category' do
+      expect do
+        subject.approve!
+      end.to change(subject, :approved).to(true)
+    end
+
+    it 'updates the approved_at' do
+      expect do
+        subject.approve!
+      end.to change(subject, :approved_at).to(now)
+    end
+  end
 end
