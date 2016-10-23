@@ -19,6 +19,7 @@ group :test do
   gem 'shoulda-matchers'
   gem 'faker'
   gem 'rspec-collection_matchers'
+  gem 'timecop'
 end
 
 group :development do
