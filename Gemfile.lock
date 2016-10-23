@@ -53,6 +53,8 @@ GEM
     factory_girl_rails (4.7.0)
       factory_girl (~> 4.7.0)
       railties (>= 3.0.0)
+    faker (1.6.5)
+      i18n (~> 0.5)
     ffi (1.9.14)
     globalid (0.3.7)
       activesupport (>= 4.1.0)
@@ -113,6 +115,8 @@ GEM
     rb-fsevent (0.9.7)
     rb-inotify (0.9.7)
       ffi (>= 0.5.0)
+    rspec-collection_matchers (1.1.2)
+      rspec-expectations (>= 2.99.0.beta1)
     rspec-core (3.5.1)
       rspec-support (~> 3.5.0)
     rspec-expectations (3.5.0)
@@ -167,11 +171,13 @@ DEPENDENCIES
   brakeman
   byebug
   factory_girl_rails
+  faker
   listen (~> 3.0.5)
   overcommit
   pg (~> 0.18)
   puma (~> 3.0)
   rails (~> 5.0.0, >= 5.0.0.1)
+  rspec-collection_matchers
   rspec-rails
   rubocop
   shoulda-matchers
