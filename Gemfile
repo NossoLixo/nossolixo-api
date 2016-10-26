@@ -5,6 +5,12 @@ ruby '2.3.1'
 gem 'rails', '~> 5.0.0', '>= 5.0.0.1'
 gem 'pg', '~> 0.18'
 gem 'puma', '~> 3.0'
+gem 'devise_token_auth'
+gem 'omniauth'
+gem 'omniauth-facebook'
+gem 'figaro'
+gem 'rack-cors'
+gem 'pundit'
 
 group :development, :test do
   gem 'byebug', platform: :mri
