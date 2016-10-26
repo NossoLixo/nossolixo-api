@@ -10,6 +10,7 @@ gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'figaro'
 gem 'rack-cors'
+gem 'pundit'
 
 group :development, :test do
   gem 'byebug', platform: :mri
