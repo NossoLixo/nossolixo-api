@@ -8,7 +8,7 @@ class Category < ApplicationRecord
   scope :approved, -> { where(approved: true) }
 
   def as_json(options = {})
-    super(options.merge(only: [:id, :name, :color]))
+    super(options.merge(only: [:id, :name, :color, :approved]))
   end
 
   def approve!(approved_by)
