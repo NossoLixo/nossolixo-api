@@ -12,6 +12,8 @@
 
 1- Create User
 
+`POST /auth`
+
 Request
 
 ```json
@@ -55,6 +57,8 @@ Store to send them as request headers in all authenticated requests.
 
 2- Update User
 
+`PUT /auth`
+
 Requires authentication.
 
 Request
@@ -84,6 +88,8 @@ Response
 ```
 
 3- Sign In
+
+`POST /auth/sign_in`
 
 Request
 
