@@ -23,6 +23,7 @@ ActiveRecord::Schema.define(version: 20161023134624) do
     t.datetime "approved_at"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.index ["color"], name: "index_categories_on_color", unique: true, using: :btree
   end
 
 end

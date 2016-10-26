@@ -1,5 +1,6 @@
 class Category < ApplicationRecord
   validates :name, :color, presence: true
+  validates :color, uniqueness: true
 
   scope :approved, -> { where(approved: true) }
 
