@@ -8,6 +8,7 @@ gem 'puma', '~> 3.0'
 gem 'devise_token_auth'
 gem 'omniauth'
 gem 'omniauth-facebook'
+gem 'figaro'
 
 group :development, :test do
   gem 'byebug', platform: :mri
