@@ -14,8 +14,9 @@ ActiveRecord::Schema.define(version: 20161023134624) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+  enable_extension "uuid-ossp"
 
-  create_table "categories", force: :cascade do |t|
+  create_table "categories", id: :uuid, default: -> { "uuid_generate_v4()" }, force: :cascade do |t|
     t.string   "name",        null: false
     t.string   "color",       null: false
     t.boolean  "approved",    null: false
