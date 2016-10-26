@@ -144,7 +144,8 @@ Response
   "data": {
     "id": "a1e989b1-9d8a-4fd7-b0f6-e1fd0d36645f",
     "name": "Metal",
-    "color": "#fefefe"
+    "color": "#fefefe",
+    "approved": false
   }
 }
 ```
@@ -174,7 +175,8 @@ Response
   "data": {
     "id": "a1e989b1-9d8a-4fd7-b0f6-e1fd0d36645f",
     "name": "Metal",
-    "color": "#fefefe"
+    "color": "#fefefe",
+    "approved": true
   }
 }
 ```
@@ -192,7 +194,8 @@ Response
     {
       "id": "7d495710-4d8c-4091-bda6-56083fcaac27",
       "name": "Metal",
-      "color": "#fefefe"
+      "color": "#fefefe",
+      "approved": true
     }
   ]
 }
