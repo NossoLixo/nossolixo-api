@@ -2,6 +2,8 @@ module V1
   class CategoriesController < ApplicationController
     include JsonResponse
 
+    before_action :authenticate_user!
+
     def index
       categories = Category.approved
 
@@ -10,6 +12,7 @@ module V1
 
     def create
       category = Category.new(category_params)
+      category.requested_by = current_user
       category.approved = false
 
       if category.save
@@ -22,7 +25,7 @@ module V1
     def update
       category = Category.find(params[:id])
 
-      if category.approve!
+      if category.approve!(current_user)
         render json: success_response(category)
       else
         render json: error_response(category.errors), status: :unprocessable_entity

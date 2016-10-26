@@ -11,7 +11,7 @@ class Category < ApplicationRecord
     super(options.merge(only: [:id, :name, :color]))
   end
 
-  def approve!
-    update(approved: true, approved_at: Time.current)
+  def approve!(approved_by)
+    update(approved: true, approved_at: Time.current, approved_by: approved_by)
   end
 end
