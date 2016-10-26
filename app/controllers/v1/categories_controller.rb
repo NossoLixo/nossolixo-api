@@ -19,6 +19,16 @@ module V1
       end
     end
 
+    def update
+      category = Category.find(params[:id])
+
+      if category.approve!
+        render json: success_response(category)
+      else
+        render json: error_response(category.errors), status: :unprocessable_entity
+      end
+    end
+
     private
 
     def category_params
