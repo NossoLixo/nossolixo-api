@@ -5,7 +5,7 @@ module V1
     before_action :authenticate_user!
 
     def index
-      categories = Category.approved
+      categories = policy_scope Category
 
       render json: success_response(categories), status: :ok
     end
