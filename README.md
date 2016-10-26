@@ -1,5 +1,7 @@
 # Nosso Lixo API
 
+[![Build Status](https://travis-ci.org/NossoLixo/nossolixo-api.svg?branch=master)](https://travis-ci.org/NossoLixo/nossolixo-api)
+
 ## Getting start
 
 - Clone the repository
