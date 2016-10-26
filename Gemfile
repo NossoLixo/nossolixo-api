@@ -9,6 +9,7 @@ gem 'devise_token_auth'
 gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'figaro'
+gem 'rack-cors'
 
 group :development, :test do
   gem 'byebug', platform: :mri
