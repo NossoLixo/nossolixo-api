@@ -23,7 +23,7 @@ module V1
     end
 
     def update
-      category = Category.find(params[:id])
+      authorize category = Category.find(params[:id])
 
       if category.approved? || category.approve!(current_user)
         render json: success_response(category)
