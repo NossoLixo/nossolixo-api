@@ -7,6 +7,7 @@ gem 'pg', '~> 0.18'
 gem 'puma', '~> 3.0'
 gem 'devise_token_auth'
 gem 'omniauth'
+gem 'omniauth-facebook'
 
 group :development, :test do
   gem 'byebug', platform: :mri
