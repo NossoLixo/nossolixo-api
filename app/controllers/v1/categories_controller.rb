@@ -25,7 +25,7 @@ module V1
     def update
       category = Category.find(params[:id])
 
-      if category.approve!(current_user)
+      if category.approved? || category.approve!(current_user)
         render json: success_response(category)
       else
         render json: error_response(category.errors), status: :unprocessable_entity
