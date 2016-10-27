@@ -28,7 +28,7 @@ ActiveRecord::Schema.define(version: 20161027030616) do
     t.index ["color"], name: "index_categories_on_color", unique: true, using: :btree
   end
 
-  create_table "cities", force: :cascade do |t|
+  create_table "cities", id: :uuid, default: -> { "uuid_generate_v4()" }, force: :cascade do |t|
     t.string   "name",       null: false
     t.string   "state",      null: false
     t.datetime "created_at", null: false
