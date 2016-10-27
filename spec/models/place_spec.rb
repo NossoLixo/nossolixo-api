@@ -1,5 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe Place, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  include_examples 'approvable' do
+    let!(:approved) { create(:place, :approved) }
+    let!(:disapproved) { create(:place, :disapproved) }
+  end
 end
