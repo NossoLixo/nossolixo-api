@@ -12,7 +12,7 @@
 
 ### User
 
-1- Create User
+1- Create user
 
 `POST /auth`
 
@@ -57,7 +57,7 @@ uid thiagogsr@gmail.com
 
 Store to send them as request headers in all authenticated requests.
 
-2- Update User
+2- Update user
 
 `PUT /auth`
 
@@ -89,7 +89,7 @@ Response
 }
 ```
 
-3- Sign In
+3- Sign-in
 
 `POST /auth/sign_in`
 
@@ -131,7 +131,7 @@ Error response
 
 Requires authentication.
 
-1- Create Category
+1- Create category
 
 `POST /v1/categories`
 
@@ -171,7 +171,7 @@ Error response
 }
 ```
 
-2- Approve Category
+2- Approve category
 
 `PUT /v1/categories/:category_id`
 
@@ -204,6 +204,26 @@ Response
       "name": "Metal",
       "color": "#fefefe",
       "approved": true
+    }
+  ]
+}
+```
+
+### City
+
+1- List cities
+
+`GET /v1/cities`
+
+Response
+
+```json
+{
+  "status": "success",
+  "data": [
+    {
+      "name": "Aracaju",
+      "state": "SE"
     }
   ]
 }
