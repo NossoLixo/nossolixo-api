@@ -1,6 +1,7 @@
 # Nosso Lixo API
 
 [![Build Status](https://travis-ci.org/NossoLixo/nossolixo-api.svg?branch=master)](https://travis-ci.org/NossoLixo/nossolixo-api)
+[![Code Climate](https://codeclimate.com/github/NossoLixo/nossolixo-api/badges/gpa.svg)](https://codeclimate.com/github/NossoLixo/nossolixo-api)
 
 ## Getting start
 
