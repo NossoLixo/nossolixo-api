@@ -4,6 +4,10 @@ class City < ApplicationRecord
 
   before_save :upcase_state!
 
+  def as_json(options = {})
+    super(options.merge(only: [:name, :state]))
+  end
+
   private
 
   def upcase_state!
