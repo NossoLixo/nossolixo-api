@@ -14,6 +14,7 @@ class CreatePlaces < ActiveRecord::Migration[5.0]
       t.string :site
       t.uuid :requested_by_id, index: true, null: false
       t.uuid :approved_by_id, index: true
+      t.boolean :approved, null: false
       t.datetime :approved_at
 
       t.timestamps

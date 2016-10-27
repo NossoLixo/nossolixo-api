@@ -51,6 +51,7 @@ ActiveRecord::Schema.define(version: 20161027035449) do
     t.string   "site"
     t.uuid     "requested_by_id", null: false
     t.uuid     "approved_by_id"
+    t.boolean  "approved",        null: false
     t.datetime "approved_at"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
