@@ -38,7 +38,7 @@ ActiveRecord::Schema.define(version: 20161027035449) do
   end
 
   create_table "places", id: :uuid, default: -> { "uuid_generate_v4()" }, force: :cascade do |t|
-    t.uuid     "city_id"
+    t.uuid     "city_id",         null: false
     t.string   "name",            null: false
     t.string   "description"
     t.string   "street",          null: false

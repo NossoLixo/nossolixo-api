@@ -1,7 +1,7 @@
 class CreatePlaces < ActiveRecord::Migration[5.0]
   def change
     create_table :places, id: :uuid do |t|
-      t.uuid :city_id, index: true
+      t.uuid :city_id, index: true, null: false
       t.string :name, null: false
       t.string :description
       t.string :street, null: false
