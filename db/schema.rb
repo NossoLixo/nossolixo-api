@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161027034828) do
+ActiveRecord::Schema.define(version: 20161027035449) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,7 +25,9 @@ ActiveRecord::Schema.define(version: 20161027034828) do
     t.datetime "updated_at",      null: false
     t.uuid     "requested_by_id", null: false
     t.uuid     "approved_by_id"
+    t.index ["approved_by_id"], name: "index_categories_on_approved_by_id", using: :btree
     t.index ["color"], name: "index_categories_on_color", unique: true, using: :btree
+    t.index ["requested_by_id"], name: "index_categories_on_requested_by_id", using: :btree
   end
 
   create_table "cities", id: :uuid, default: -> { "uuid_generate_v4()" }, force: :cascade do |t|
@@ -80,6 +82,8 @@ ActiveRecord::Schema.define(version: 20161027034828) do
     t.index ["uid", "provider"], name: "index_users_on_uid_and_provider", unique: true, using: :btree
   end
 
+  add_foreign_key "categories", "users", column: "approved_by_id"
+  add_foreign_key "categories", "users", column: "requested_by_id"
   add_foreign_key "places", "cities"
   add_foreign_key "places", "users", column: "approved_by_id"
   add_foreign_key "places", "users", column: "requested_by_id"
