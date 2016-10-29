@@ -130,9 +130,7 @@ Error response
 
 ### Category
 
-Requires authentication.
-
-1- Create category
+1- Create category (requires authentication)
 
 `POST /v1/categories`
 
@@ -172,7 +170,7 @@ Error response
 }
 ```
 
-2- Approve category
+2- Approve category (requires authentication)
 
 `PUT /v1/categories/:category_id`
 
@@ -190,7 +188,7 @@ Response
 }
 ```
 
-3- List categories
+3- List categories (requires authentication)
 
 `GET /v1/categories`
 
@@ -229,3 +227,105 @@ Response
   ]
 }
 ```
+
+### Place
+
+1- Create place (requires authentication)
+
+`POST /v1/places`
+
+Request
+
+```json
+{
+  "city_id": "a60edc85-28db-419d-b412-99f897815c1d",
+  "name": "CARE",
+  "description": "Cooperativa dos Agentes Autônomos de Reciclagem de Aracaju",
+  "street": "R. A5",
+  "number": "15",
+  "district": "Santa Maria",
+  "lat": -10.9919196,
+  "lng": -37.0984939,
+  "phone_number": "7932431581",
+  "email": "",
+  "site": ""
+}
+```
+
+Response
+
+```json
+{
+  "status": "success",
+  "data": {
+    "id": "6078ba8a-ceb4-40a0-bcd1-ef3f09a1aa33",
+    "city_id": "a60edc85-28db-419d-b412-99f897815c1d",
+    "name": "CARE",
+    "description": "Cooperativa dos Agentes Autônomos de Reciclagem de Aracaju",
+    "street": "R. A5",
+    "number": "15",
+    "district": "Santa Maria",
+    "lat": "-10.9919196",
+    "lng": "-37.0984939",
+    "phone_number": "7932431581",
+    "email": "",
+    "site": "",
+    "approved": false
+  }
+}
+```
+
+2- Approve place (requires authentication)
+
+`PUT /v1/places/:place_id`
+
+Response
+
+```json
+{
+  "status": "success",
+  "data": {
+    "id": "6078ba8a-ceb4-40a0-bcd1-ef3f09a1aa33",
+    "approved": true,
+    "name": "CARE",
+    "city_id": "a60edc85-28db-419d-b412-99f897815c1d",
+    "street": "R. A5",
+    "lat": "-10.9919196",
+    "lng": "-37.0984939",
+    "description": "Cooperativa dos Agentes Autônomos de Reciclagem de Aracaju",
+    "number": "15",
+    "district": "Santa Maria",
+    "phone_number": "7932431581",
+    "email": "",
+    "site": ""
+  }
+}
+```
+
+3- List places
+
+`GET /v1/places`
+
+Response
+
+```json
+{
+  "status": "success",
+  "data": [
+    {
+      "id": "6078ba8a-ceb4-40a0-bcd1-ef3f09a1aa33",
+      "city_id": "a60edc85-28db-419d-b412-99f897815c1d",
+      "name": "CARE",
+      "description": "Cooperativa dos Agentes Autônomos de Reciclagem de Aracaju",
+      "street": "R. A5",
+      "number": "15",
+      "district": "Santa Maria",
+      "lat": "-10.9919196",
+      "lng": "-37.0984939",
+      "phone_number": "7932431581",
+      "email": "",
+      "site": "",
+      "approved": true
+    }
+  ]
+}```
