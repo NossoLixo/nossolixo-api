@@ -6,7 +6,7 @@ module V1
     before_action :authenticate_user!, except: :index
 
     def index
-      places = policy_scope Place
+      places = policy_scope Place.includes(:city, :categories)
 
       render json: success_response(places), status: :ok
     end

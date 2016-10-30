@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161027035449) do
+ActiveRecord::Schema.define(version: 20161030132002) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,6 +28,12 @@ ActiveRecord::Schema.define(version: 20161027035449) do
     t.index ["approved_by_id"], name: "index_categories_on_approved_by_id", using: :btree
     t.index ["color"], name: "index_categories_on_color", unique: true, using: :btree
     t.index ["requested_by_id"], name: "index_categories_on_requested_by_id", using: :btree
+  end
+
+  create_table "categories_places", id: false, force: :cascade do |t|
+    t.uuid "place_id",    null: false
+    t.uuid "category_id", null: false
+    t.index ["place_id", "category_id"], name: "index_categories_places_on_place_id_and_category_id", using: :btree
   end
 
   create_table "cities", id: :uuid, default: -> { "uuid_generate_v4()" }, force: :cascade do |t|
