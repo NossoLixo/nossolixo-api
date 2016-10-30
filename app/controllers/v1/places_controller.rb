@@ -1,6 +1,5 @@
 module V1
   class PlacesController < ApplicationController
-    include JsonResponse
     include ApprovableState
 
     before_action :authenticate_user!, except: :index
@@ -8,7 +7,7 @@ module V1
     def index
       places = policy_scope Place.includes(:city, :categories)
 
-      render json: success_response(places), status: :ok
+      render json: places, status: :ok
     end
 
     def create
@@ -16,9 +15,9 @@ module V1
       place = initial_approvable_state(place)
 
       if place.save
-        render json: success_response(place), status: :created
+        render json: place, status: :created
       else
-        render json: error_response(place.errors), status: :unprocessable_entity
+        render json: { errors: place.errors }, status: :unprocessable_entity
       end
     end
 
@@ -26,9 +25,9 @@ module V1
       authorize place = Place.find(params[:id])
 
       if approved?(place)
-        render json: success_response(place)
+        render json: place
       else
-        render json: error_response(place.errors), status: :unprocessable_entity
+        render json: { errors: place.errors }, status: :unprocessable_entity
       end
     end
 
