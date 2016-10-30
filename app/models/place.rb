@@ -2,8 +2,8 @@ class Place < ApplicationRecord
   include Approvable
 
   validates :name, :city, :street, :lat, :lng, presence: true
-  has_and_belongs_to_many :categories
 
+  has_and_belongs_to_many :categories
   belongs_to :city
 
   def as_json(options = {})
