@@ -10,7 +10,7 @@ class Place < ApplicationRecord
 
   def as_json(options = {})
     place = { except: [:requested_by_id, :approved_by_id, :approved_at, :created_at, :updated_at] }
-    associations = { include: { categories: [:id, :name, :color] } }
+    associations = { include: { categories: { only: [:id, :name, :color] } } }
     super(options.merge(place.merge(associations)))
   end
 
