@@ -1,7 +1,6 @@
 FactoryGirl.define do
   factory :place do
     name { Faker::Name.name }
-    city
     street { Faker::Address.street_name }
     lat { Faker::Address.latitude }
     lng { Faker::Address.longitude }

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161030132002) do
+ActiveRecord::Schema.define(version: 20161030161720) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,15 +36,7 @@ ActiveRecord::Schema.define(version: 20161030132002) do
     t.index ["place_id", "category_id"], name: "index_categories_places_on_place_id_and_category_id", using: :btree
   end
 
-  create_table "cities", id: :uuid, default: -> { "uuid_generate_v4()" }, force: :cascade do |t|
-    t.string   "name",       null: false
-    t.string   "state",      null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "places", id: :uuid, default: -> { "uuid_generate_v4()" }, force: :cascade do |t|
-    t.uuid     "city_id",         null: false
     t.string   "name",            null: false
     t.string   "description"
     t.string   "street",          null: false
@@ -62,7 +54,6 @@ ActiveRecord::Schema.define(version: 20161030132002) do
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
     t.index ["approved_by_id"], name: "index_places_on_approved_by_id", using: :btree
-    t.index ["city_id"], name: "index_places_on_city_id", using: :btree
     t.index ["requested_by_id"], name: "index_places_on_requested_by_id", using: :btree
   end
 
@@ -91,7 +82,6 @@ ActiveRecord::Schema.define(version: 20161030132002) do
 
   add_foreign_key "categories", "users", column: "approved_by_id"
   add_foreign_key "categories", "users", column: "requested_by_id"
-  add_foreign_key "places", "cities"
   add_foreign_key "places", "users", column: "approved_by_id"
   add_foreign_key "places", "users", column: "requested_by_id"
 end
