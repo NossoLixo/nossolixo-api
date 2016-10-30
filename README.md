@@ -198,7 +198,6 @@ Request
 
 ```json
 {
-  "city_id": "a60edc85-28db-419d-b412-99f897815c1d",
   "name": "CARE",
   "description": "Cooperativa dos Agentes Autônomos de Reciclagem de Aracaju",
   "street": "R. A5",
@@ -208,7 +207,9 @@ Request
   "lng": -37.0984939,
   "phone_number": "7932431581",
   "email": "",
-  "site": ""
+  "site": "",
+  "city": "Aracaju",
+  "state": "SE"
 }
 ```
 
@@ -228,11 +229,8 @@ Response
   "email": null,
   "site": null,
   "approved": true,
-  "city": {
-    "id": "a60edc85-28db-419d-b412-99f897815c1d",
-    "name": "Aracaju",
-    "state": "SE"
-  },
+  "city": "Aracaju",
+  "state": "SE",
   "categories": []
 }
 ```
@@ -257,11 +255,8 @@ Response
   "email": null,
   "site": null,
   "approved": true,
-  "city": {
-    "id": "a60edc85-28db-419d-b412-99f897815c1d",
-    "name": "Aracaju",
-    "state": "SE"
-  },
+  "city": "Aracaju",
+  "state": "SE",
   "categories": []
 }
 ```
@@ -287,11 +282,8 @@ Response
     "email": null,
     "site": null,
     "approved": true,
-    "city": {
-      "id": "a60edc85-28db-419d-b412-99f897815c1d",
-      "name": "Aracaju",
-      "state": "SE"
-    },
+    "city": "Aracaju",
+    "state": "SE",
     "categories": [
       {
         "id": "ea80a68d-c915-482a-bca1-36b4acac6f15",
