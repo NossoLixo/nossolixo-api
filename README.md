@@ -258,8 +258,7 @@ Response
 {
   "status": "success",
   "data": {
-    "id": "6078ba8a-ceb4-40a0-bcd1-ef3f09a1aa33",
-    "city_id": "a60edc85-28db-419d-b412-99f897815c1d",
+    "id": "c6689b31-4cb0-47f1-95b5-32b74e19e62c",
     "name": "CARE",
     "description": "Cooperativa dos Agentes Autônomos de Reciclagem de Aracaju",
     "street": "R. A5",
@@ -268,9 +267,15 @@ Response
     "lat": "-10.9919196",
     "lng": "-37.0984939",
     "phone_number": "7932431581",
-    "email": "",
-    "site": "",
-    "approved": false
+    "email": null,
+    "site": null,
+    "approved": true,
+    "city": {
+      "id": "a60edc85-28db-419d-b412-99f897815c1d",
+      "name": "Aracaju",
+      "state": "SE"
+    },
+    "categories": []
   }
 }
 ```
@@ -285,19 +290,24 @@ Response
 {
   "status": "success",
   "data": {
-    "id": "6078ba8a-ceb4-40a0-bcd1-ef3f09a1aa33",
-    "approved": true,
+    "id": "c6689b31-4cb0-47f1-95b5-32b74e19e62c",
     "name": "CARE",
-    "city_id": "a60edc85-28db-419d-b412-99f897815c1d",
-    "street": "R. A5",
-    "lat": "-10.9919196",
-    "lng": "-37.0984939",
     "description": "Cooperativa dos Agentes Autônomos de Reciclagem de Aracaju",
+    "street": "R. A5",
     "number": "15",
     "district": "Santa Maria",
+    "lat": "-10.9919196",
+    "lng": "-37.0984939",
     "phone_number": "7932431581",
-    "email": "",
-    "site": ""
+    "email": null,
+    "site": null,
+    "approved": true,
+    "city": {
+      "id": "a60edc85-28db-419d-b412-99f897815c1d",
+      "name": "Aracaju",
+      "state": "SE"
+    },
+    "categories": []
   }
 }
 ```
@@ -313,8 +323,7 @@ Response
   "status": "success",
   "data": [
     {
-      "id": "6078ba8a-ceb4-40a0-bcd1-ef3f09a1aa33",
-      "city_id": "a60edc85-28db-419d-b412-99f897815c1d",
+      "id": "c6689b31-4cb0-47f1-95b5-32b74e19e62c",
       "name": "CARE",
       "description": "Cooperativa dos Agentes Autônomos de Reciclagem de Aracaju",
       "street": "R. A5",
@@ -323,9 +332,26 @@ Response
       "lat": "-10.9919196",
       "lng": "-37.0984939",
       "phone_number": "7932431581",
-      "email": "",
-      "site": "",
-      "approved": true
+      "email": null,
+      "site": null,
+      "approved": true,
+      "city": {
+        "id": "a60edc85-28db-419d-b412-99f897815c1d",
+        "name": "Aracaju",
+        "state": "SE"
+      },
+      "categories": [
+        {
+          "id": "ea80a68d-c915-482a-bca1-36b4acac6f15",
+          "name": "Plástico",
+          "color": "#ffffff"
+        },
+        {
+          "id": "40ca86f5-58ad-4c3a-9617-da2f730f7164",
+          "name": "Metal",
+          "color": "#000000"
+        }
+      ]
     }
   ]
 }
