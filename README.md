@@ -58,11 +58,9 @@ uid thiagogsr@gmail.com
 
 Store to send them as request headers in all authenticated requests.
 
-2- Update user
+2- Update user (requires authentication)
 
 `PUT /auth`
-
-Requires authentication.
 
 Request
 
