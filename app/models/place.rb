@@ -1,18 +1,22 @@
 class Place < ApplicationRecord
   include Approvable
 
-  validates :name, :city, :street, :lat, :lng, presence: true
+  validates :name, :street, :city, :state, :lat, :lng, presence: true
+  validates :state, length: { is: 2 }
+
+  before_save :upcase_state!
 
   has_and_belongs_to_many :categories
-  belongs_to :city
 
   def as_json(options = {})
-    place = {
-      except: [:city_id, :requested_by_id, :approved_by_id, :approved_at, :created_at, :updated_at]
-    }
-    city = { only: [:id, :name, :state] }
-    categories = { only: [:id, :name, :color] }
-    associations = { include: { city: city, categories: categories } }
+    place = { except: [:requested_by_id, :approved_by_id, :approved_at, :created_at, :updated_at] }
+    associations = { include: { categories: [:id, :name, :color] } }
     super(options.merge(place.merge(associations)))
+  end
+
+  private
+
+  def upcase_state!
+    state && state.upcase!
   end
 end

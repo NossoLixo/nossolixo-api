@@ -5,7 +5,7 @@ module V1
     before_action :authenticate_user!, except: :index
 
     def index
-      places = policy_scope Place.includes(:city, :categories)
+      places = policy_scope Place.includes(:categories)
 
       render json: places, status: :ok
     end
@@ -34,8 +34,8 @@ module V1
     private
 
     def place_params
-      params.require(:place).permit(:name, :city_id, :description, :street, :number, :district,
-                                    :lat, :lng, :phone_number, :email, :site)
+      params.require(:place).permit(:name, :description, :street, :number, :district, :city,
+                                    :state, :lat, :lng, :phone_number, :email, :site)
     end
   end
 end
