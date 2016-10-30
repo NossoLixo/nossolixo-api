@@ -1,6 +1,5 @@
 module V1
   class CategoriesController < ApplicationController
-    include JsonResponse
     include ApprovableState
 
     before_action :authenticate_user!
@@ -8,7 +7,7 @@ module V1
     def index
       categories = policy_scope Category
 
-      render json: success_response(categories), status: :ok
+      render json: categories, status: :ok
     end
 
     def create
@@ -16,9 +15,9 @@ module V1
       category = initial_approvable_state(category)
 
       if category.save
-        render json: success_response(category), status: :created
+        render json: category, status: :created
       else
-        render json: error_response(category.errors), status: :unprocessable_entity
+        render json: { errors: category.errors }, status: :unprocessable_entity
       end
     end
 
@@ -26,9 +25,9 @@ module V1
       authorize category = Category.find(params[:id])
 
       if approved?(category)
-        render json: success_response(category)
+        render json: category
       else
-        render json: error_response(category.errors), status: :unprocessable_entity
+        render json: { errors: category.errors }, status: :unprocessable_entity
       end
     end
 
