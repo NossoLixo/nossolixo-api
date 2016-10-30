@@ -34,8 +34,8 @@ module V1
     private
 
     def place_params
-      params.require(:place).permit(:name, :description, :street, :number, :district, :lat, :lng,
-                                    :phone_number, :email, :site)
+      params.require(:place).permit(:name, :description, :street, :number, :district, :city,
+                                    :state, :lat, :lng, :phone_number, :email, :site)
     end
   end
 end
