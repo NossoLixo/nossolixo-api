@@ -188,23 +188,6 @@ Response
 ]
 ```
 
-### City
-
-1- List cities
-
-`GET /v1/cities`
-
-Response
-
-```json
-[
-  {
-    "name": "Aracaju",
-    "state": "SE"
-  }
-]
-```
-
 ### Place
 
 1- Create place (requires authentication)
