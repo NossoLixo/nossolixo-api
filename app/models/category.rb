@@ -1,4 +1,5 @@
 class Category < ApplicationRecord
+  include InsensitiveOrder
   include Approvable
 
   REJECTED_ATTRIBUTES = [
