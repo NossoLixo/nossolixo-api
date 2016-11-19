@@ -8,6 +8,10 @@ class Place < ApplicationRecord
 
   has_and_belongs_to_many :categories
 
+  scope :by_category, lambda { |category_name|
+    joins(:categories).merge(Category.by_name(category_name)) if category_name.present?
+  }
+
   def as_json(options = {})
     place = { except: [:requested_by_id, :approved_by_id, :approved_at, :created_at, :updated_at] }
     associations = { include: { categories: { only: [:id, :name, :color] } } }
