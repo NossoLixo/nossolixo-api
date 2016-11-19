@@ -2,7 +2,7 @@ module V1
   class CategoriesController < ApplicationController
     include ApprovableState
 
-    before_action :authenticate_user!
+    before_action :authenticate_user!, except: :index
 
     def index
       categories = policy_scope Category
