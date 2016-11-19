@@ -6,10 +6,12 @@ class Place < ApplicationRecord
 
   before_save :upcase_state!
 
-  has_and_belongs_to_many :categories
+  has_many :categories_places
+  has_many :categories, through: :categories_places
 
-  scope :by_category, lambda { |category_name|
-    joins(:categories).merge(Category.by_name(category_name)) if category_name.present?
+  scope :by_category, lambda { |category|
+    joins(:categories_places)
+      .where('categories_places.category_id = ?', category) if category.present?
   }
 
   def as_json(options = {})
