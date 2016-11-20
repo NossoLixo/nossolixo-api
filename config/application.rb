@@ -29,5 +29,9 @@ module NossolixoApi
     config.middleware.use ActionDispatch::Flash
     config.middleware.use ActionDispatch::Cookies
     config.middleware.use ActionDispatch::Session::CookieStore
+
+    config.cache_store = :redis_store,
+                         ENV.fetch('REDIS_URL', 'redis://localhost:6379/0/cache'),
+                         { expires_in: 1.month }
   end
 end
