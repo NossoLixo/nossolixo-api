@@ -12,6 +12,7 @@ gem 'figaro'
 gem 'rack-cors'
 gem 'pundit'
 gem 'rack-attack'
+gem 'redis-rails'
 
 group :development, :test do
   gem 'byebug', platform: :mri
