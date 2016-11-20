@@ -11,6 +11,7 @@ gem 'omniauth-facebook'
 gem 'figaro'
 gem 'rack-cors'
 gem 'pundit'
+gem 'rack-attack'
 
 group :development, :test do
   gem 'byebug', platform: :mri
