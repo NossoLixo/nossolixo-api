@@ -2,12 +2,18 @@ module V1
   class PlacesController < ApplicationController
     include ApprovableState
 
-    before_action :authenticate_user!, except: :index
+    before_action :authenticate_user!, except: [:index, :show]
 
     def index
       places = policy_scope Place.includes(:categories).by_category(params[:category])
 
       render json: places, status: :ok
+    end
+
+    def show
+      place = Place.find(params[:id])
+
+      render json: place
     end
 
     def create
