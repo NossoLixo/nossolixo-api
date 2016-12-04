@@ -23,6 +23,7 @@ module V1
       place = initial_approvable_state(place)
 
       if place.save
+        invalidate_cache(place)
         render json: place, status: :created
       else
         render json: { errors: place.errors }, status: :unprocessable_entity
@@ -42,7 +43,7 @@ module V1
 
     private
 
-    def invalidate_cache
+    def invalidate_cache(place)
       Rails.cache.delete('places/admin')
       Rails.cache.delete('places/public')
       Rails.cache.delete("place/#{place.id}")
