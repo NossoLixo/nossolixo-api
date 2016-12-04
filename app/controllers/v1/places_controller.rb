@@ -33,6 +33,7 @@ module V1
       authorize place = Place.find(params[:id])
 
       if approved?(place)
+        invalidate_cache(place)
         render json: place
       else
         render json: { errors: place.errors }, status: :unprocessable_entity
@@ -40,6 +41,12 @@ module V1
     end
 
     private
+
+    def invalidate_cache
+      Rails.cache.delete('places/admin')
+      Rails.cache.delete('places/public')
+      Rails.cache.delete("place/#{place.id}")
+    end
 
     def place_params
       params.require(:place).permit(:name, :description, :street, :number, :district, :city,
