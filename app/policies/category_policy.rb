@@ -2,9 +2,13 @@ class CategoryPolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
       if user&.admin?
-        scope.all
+        Rails.cache.fetch('categories/admin') do
+          scope.all
+        end
       else
-        scope.approved
+        Rails.cache.fetch('categories/public') do
+          scope.approved
+        end
       end
     end
   end
