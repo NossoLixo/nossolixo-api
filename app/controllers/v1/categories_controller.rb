@@ -15,6 +15,7 @@ module V1
       category = initial_approvable_state(category)
 
       if category.save
+        invalidate_cache
         render json: category, status: :created
       else
         render json: { errors: category.errors }, status: :unprocessable_entity
@@ -25,6 +26,7 @@ module V1
       authorize category = Category.find(params[:id])
 
       if approved?(category)
+        invalidate_cache
         render json: category
       else
         render json: { errors: category.errors }, status: :unprocessable_entity
@@ -32,6 +34,11 @@ module V1
     end
 
     private
+
+    def invalidate_cache
+      Rails.cache.delete('categories/admin')
+      Rails.cache.delete('categories/public')
+    end
 
     def category_params
       params.require(:category).permit(:name)

@@ -11,7 +11,9 @@ module V1
     end
 
     def show
-      place = Place.find(params[:id])
+      place = Rails.cache.fetch("place/#{params[:id]}") do
+        Place.find(params[:id])
+      end
 
       render json: place
     end
@@ -21,6 +23,7 @@ module V1
       place = initial_approvable_state(place)
 
       if place.save
+        invalidate_cache(place)
         render json: place, status: :created
       else
         render json: { errors: place.errors }, status: :unprocessable_entity
@@ -31,6 +34,7 @@ module V1
       authorize place = Place.find(params[:id])
 
       if approved?(place)
+        invalidate_cache(place)
         render json: place
       else
         render json: { errors: place.errors }, status: :unprocessable_entity
@@ -38,6 +42,12 @@ module V1
     end
 
     private
+
+    def invalidate_cache(place)
+      Rails.cache.delete('places/admin')
+      Rails.cache.delete('places/public')
+      Rails.cache.delete("place/#{place.id}")
+    end
 
     def place_params
       params.require(:place).permit(:name, :description, :street, :number, :district, :city,
