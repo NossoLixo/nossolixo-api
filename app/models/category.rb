@@ -10,8 +10,7 @@ class Category < ApplicationRecord
     :updated_at
   ].freeze
 
-  validates :name, :color, presence: true
-  validates :color, uniqueness: { case_sensitive: false }
+  validates :name, presence: true
 
   def as_json(options = {})
     super(options.merge(except: REJECTED_ATTRIBUTES))
