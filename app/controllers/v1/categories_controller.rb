@@ -34,7 +34,7 @@ module V1
     private
 
     def category_params
-      params.require(:category).permit(:name, :color)
+      params.require(:category).permit(:name)
     end
   end
 end

@@ -1,7 +1,6 @@
 FactoryGirl.define do
   factory :category do
     name { Faker::Name.name }
-    color { Faker::Color.hex_color }
     approved false
     association :requested_by, factory: :user
 
