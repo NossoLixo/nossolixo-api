@@ -11,7 +11,9 @@ module V1
     end
 
     def show
-      place = Place.find(params[:id])
+      place = Rails.cache.fetch("place/#{params[:id]}") do
+        Place.find(params[:id])
+      end
 
       render json: place
     end
