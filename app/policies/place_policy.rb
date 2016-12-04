@@ -2,9 +2,13 @@ class PlacePolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
       if user&.admin?
-        scope.all
+        Rails.cache.fetch('places/admin') do
+          scope.all
+        end
       else
-        scope.approved
+        Rails.cache.fetch('places/public') do
+          scope.approved
+        end
       end
     end
   end
