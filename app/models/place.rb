@@ -6,7 +6,7 @@ class Place < ApplicationRecord
 
   before_save :upcase_state!
 
-  has_many :categories_places
+  has_many :categories_places, dependent: :destroy
   has_many :categories, through: :categories_places
 
   scope :by_category, lambda { |category|
