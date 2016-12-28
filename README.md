@@ -128,8 +128,7 @@ Request
 
 ```json
 {
-  "name": "Metal",
-  "color": "#fefefe"
+  "name": "Metal"
 }
 ```
 
@@ -139,20 +138,7 @@ Response
 {
   "id": "a1e989b1-9d8a-4fd7-b0f6-e1fd0d36645f",
   "name": "Metal",
-  "color": "#fefefe",
   "approved": false
-}
-```
-
-Error response
-
-```json
-{
-  "errors": {
-    "color": [
-      "has already been taken"
-    ]
-  }
 }
 ```
 
@@ -166,7 +152,6 @@ Response
 {
   "id": "a1e989b1-9d8a-4fd7-b0f6-e1fd0d36645f",
   "name": "Metal",
-  "color": "#fefefe",
   "approved": true
 }
 ```
@@ -182,7 +167,6 @@ Response
   {
     "id": "7d495710-4d8c-4091-bda6-56083fcaac27",
     "name": "Metal",
-    "color": "#fefefe",
     "approved": true
   }
 ]
@@ -287,13 +271,11 @@ Response
     "categories": [
       {
         "id": "ea80a68d-c915-482a-bca1-36b4acac6f15",
-        "name": "Plástico",
-        "color": "#ffffff"
+        "name": "Plástico"
       },
       {
         "id": "40ca86f5-58ad-4c3a-9617-da2f730f7164",
-        "name": "Metal",
-        "color": "#000000"
+        "name": "Metal"
       }
     ]
   }
