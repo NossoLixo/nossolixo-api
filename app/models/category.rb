@@ -12,6 +12,9 @@ class Category < ApplicationRecord
 
   validates :name, presence: true
 
+  has_many :categories_places, dependent: :destroy
+  has_many :places, through: :categories_places
+
   def as_json(options = {})
     super(options.merge(except: REJECTED_ATTRIBUTES))
   end
