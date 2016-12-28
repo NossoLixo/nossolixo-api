@@ -10,8 +10,9 @@ class Place < ApplicationRecord
   has_many :categories, through: :categories_places
 
   scope :by_category, lambda { |category|
-    joins(:categories_places)
-      .where('categories_places.category_id = ?', category) if category.present?
+    if category.present?
+      joins(:categories_places).where('categories_places.category_id = ?', category)
+    end
   }
 
   def as_json(options = {})
