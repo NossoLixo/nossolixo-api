@@ -5,7 +5,7 @@ module V1
     before_action :authenticate_user!, except: :index
 
     def index
-      categories = policy_scope Category.insensitive_order(:name)
+      categories = policy_scope Category
 
       render json: categories, status: :ok
     end

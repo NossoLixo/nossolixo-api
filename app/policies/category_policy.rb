@@ -3,11 +3,11 @@ class CategoryPolicy < ApplicationPolicy
     def resolve
       if user&.admin?
         Rails.cache.fetch('categories/admin') do
-          scope.all
+          scope.all.insensitive_order(:name).to_a
         end
       else
         Rails.cache.fetch('categories/public') do
-          scope.approved
+          scope.approved.insensitive_order(:name).to_a
         end
       end
     end
