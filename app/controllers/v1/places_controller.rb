@@ -43,7 +43,7 @@ module V1
 
     private
 
-    def filter_places
+    def fetch_places
       if current_user&.admin?
         admin_places
       else
