@@ -142,7 +142,7 @@ Response
 }
 ```
 
-2- Approve category (requires authentication)
+2- Approve category (requires admin authentication)
 
 `PUT /v1/categories/:category_id`
 
@@ -156,7 +156,7 @@ Response
 }
 ```
 
-3- List categories (requires authentication)
+3- List categories
 
 `GET /v1/categories`
 
@@ -219,7 +219,7 @@ Response
 }
 ```
 
-2- Approve place (requires authentication)
+2- Approve place (requires admin authentication)
 
 `PUT /v1/places/:place_id`
 
@@ -248,6 +248,43 @@ Response
 3- List places
 
 `GET /v1/places`
+
+Response
+
+```json
+[
+  {
+    "id": "c6689b31-4cb0-47f1-95b5-32b74e19e62c",
+    "name": "CARE",
+    "description": "Cooperativa dos Agentes Autônomos de Reciclagem de Aracaju",
+    "street": "R. A5",
+    "number": "15",
+    "district": "Santa Maria",
+    "lat": "-10.9919196",
+    "lng": "-37.0984939",
+    "phone_number": "7932431581",
+    "email": null,
+    "site": null,
+    "approved": true,
+    "city": "Aracaju",
+    "state": "SE",
+    "categories": [
+      {
+        "id": "ea80a68d-c915-482a-bca1-36b4acac6f15",
+        "name": "Plástico"
+      },
+      {
+        "id": "40ca86f5-58ad-4c3a-9617-da2f730f7164",
+        "name": "Metal"
+      }
+    ]
+  }
+]
+```
+
+4- Filter places
+
+`GET /v1/places?category=40ca86f5-58ad-4c3a-9617-da2f730f7164`
 
 Response
 
