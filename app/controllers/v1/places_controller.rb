@@ -5,14 +5,14 @@ module V1
     before_action :authenticate_user!, except: [:index, :show]
 
     def index
-      places = policy_scope Place.includes(:categories).by_category(params[:category])
+      places = fetch_places
 
       render json: places, status: :ok
     end
 
     def show
       place = Rails.cache.fetch("place/#{params[:id]}") do
-        Place.find(params[:id])
+        Place.find(params[:id]).as_json
       end
 
       render json: place
@@ -23,7 +23,7 @@ module V1
       place = initial_approvable_state(place)
 
       if place.save
-        invalidate_cache(place)
+        invalidate_cache
         render json: place, status: :created
       else
         render json: { errors: place.errors }, status: :unprocessable_entity
@@ -43,10 +43,28 @@ module V1
 
     private
 
-    def invalidate_cache(place)
-      Rails.cache.delete('places/admin')
-      Rails.cache.delete('places/public')
-      Rails.cache.delete("place/#{place.id}")
+    def filter_places
+      if current_user&.admin?
+        admin_places
+      else
+        public_places
+      end
+    end
+
+    def admin_places
+      Rails.cache.fetch("places/admin?category=#{params[:category]}") do
+        Place.includes(:categories).by_category(params[:category]).to_a
+      end
+    end
+
+    def public_places
+      Rails.cache.fetch("places/public?category=#{params[:category]}") do
+        Place.includes(:categories).by_category(params[:category]).approved.to_a
+      end
+    end
+
+    def invalidate_cache
+      Rails.cache.clear
     end
 
     def place_params
